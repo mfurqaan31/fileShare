@@ -3,3 +3,5 @@ pyotp
 requests
 azure-storage-blob
 python-dotenv
+qrcode
+sendgrid
