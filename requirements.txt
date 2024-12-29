@@ -1,7 +1,12 @@
 Flask
 pyotp
-requests
 azure-storage-blob
+pyzipper
+pytz
 python-dotenv
+sib-api-v3-sdk
+azure-keyvault-secrets
+azure-identity
+requests
 qrcode
 sendgrid
