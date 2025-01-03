@@ -1,12 +1,11 @@
-Flask
+sendgrid
+flask
 pyotp
 azure-storage-blob
-pyzipper
 pytz
 python-dotenv
 sib-api-v3-sdk
-azure-keyvault-secrets
-azure-identity
-requests
+pyzipper
 qrcode
-sendgrid
+azure-identity
+azure-keyvault-secrets
