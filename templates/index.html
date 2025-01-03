@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fileShare Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/images/apple-touch-icon.png">
+    <link rel="shortcut icon" type="image/png" sizes="512x512" href="../static/images/android-chrome-512x512.png">
+    <link rel="shortcut icon" type="image/png" sizes="192x192" href="../static/images/android-chrome-192x192.png">
+    <link rel="shortcut icon" type="image/png" sizes="32x32" href="../static/images/favicon-32x32.png">
+    <link rel="shortcut icon" type="image/png" sizes="16x16" href="../static/images/favicon-16x16.png">
+</head>
+<body>
+    <div class="loading-overlay">
+        <div class="loading-container">
+            <div class="loading-circle"></div>
+            <div class="loading-text">LOADING</div>
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../static/images/fs-logo.png" alt="FS Logo" draggable="false">
+                <span class="logo-text">fileShare</span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content-wrapper">
+            <h2>About the Developer</h2>
+            <section class="about-section fade-in">
+                <p>
+                    Hi, I'm Mohammed Furqaan, the developer behind fileShare. To get to know more about me visit my 
+                    <a href="https://furqaanpatel.live/" target="_blank" style="color: blue; text-decoration: none;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';">website</a>
+                </p>
+                <br>
+                <p>
+                    Upload files up to 1 GB, enter the details, and verify the OTP. Recipients will get a secure SAS link and zip file password for download. You will receive an alert once the file transfer is completed. Please do not exit the website until you receive the completion alert.
+                </p>
+                <br>
+                <p>
+                    <strong>Note:</strong> You are allowed up to three OTP attempts.
+                    <br>
+                    <strong>
+                        By using this service, you agree to the 
+                        <a href="/privacy_page" target="_blank" style="color: blue; text-decoration: none;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';">Privacy Policy</a>
+                    </strong>
+                </p>
+            </section>
+
+            <h2 class="section-title fade-in">Share Your Files Easily</h2>
+
+            <section class="text-center fade-in">
+                <div class="file-upload-container">
+                    <div class="upload-area" id="drop-zone">
+                        <div class="inner-upload-area" id="uploadPrompt">
+                            <div class="upload-icon">📄</div>
+                            <h2>Send large files up to 1 GB</h2>
+                            <p>It's 100% free, no registration required</p>
+                            <p><a href="#" style="color: var(--neon)">Click here to add files</a></p>
+                        </div>
+                        <div class="files-list" id="filesList" style="display: none;">
+                            <div class="files-header">
+                                <h3 id="filesAddedText">0 files added (0 B)</h3>
+                                <button class="clear-all" id="clearAllBtn">
+                                    <i class="fa-sharp fa-solid fa-xmark fa-lg" style="color: #cfff04;"></i>
+                                </button>
+                            </div>
+                            <div class="files-container"></div>
+                            <button class="add-more-files" id="addMoreFilesBtn">Add more files</button>
+                        </div>
+                    </div>
+
+                    <div class="form-section" id="emailForm">
+                        <div class="form-group">
+                            <label for="recipients">Send to</label>
+                            <div class="email-tags" id="emailTags">
+                                <input type="email" class="email-input" id="emailInput" placeholder="Recipients' emails" autocomplete="off">
+                            </div>
+                            <small>Up to 10 recipients</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="from">From</label>
+                            <input type="email" id="from" placeholder="Your email" autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="Optional" style="resize: none;"></textarea>
+                        </div>
+
+                        <div class="form-group privacy-policy">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="privacyCheckbox">
+                                <span class="checkmark"></span>
+                                I accept the <a href="/privacy_page" target="_blank">Privacy Policy</a>
+                            </label>
+                        </div>
+
+                        <button class="send-button" id="sendFilesBtn">SEND FILES</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Email Verification Section -->
+            <section class="email-verification" id="emailVerification">
+                <h2>Verify your email</h2>
+                <p>Before we complete your transfer, we need to verify if it's really you. We have sent an OTP to your email. Please enter it here:</p>
+                <div class="otp-container">
+                    <input type="text" class="otp-input" maxlength="1" pattern="[A-Za-z0-9]" inputmode="text">
+                    <input type="text" class="otp-input" maxlength="1" pattern="[A-Za-z0-9]" inputmode="text">
+                    <input type="text" class="otp-input" maxlength="1" pattern="[A-Za-z0-9]" inputmode="text">
+                    <input type="text" class="otp-input" maxlength="1" pattern="[A-Za-z0-9]" inputmode="text">
+                    <input type="text" class="otp-input" maxlength="1" pattern="[A-Za-z0-9]" inputmode="text">
+                </div>
+                <button class="verify-button" id="verifyBtn">Verify</button>
+                <div id="verificationSuccess" style="display: none; margin-top: 1rem;"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 fileShare. All rights reserved</p>
+        </div>
+    </footer>
+
+    <!-- Transfer Progress Overlay -->
+    <div class="transfer-progress" id="transferProgress">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="../static/images/fs-logo.png" alt="MF Logo">
+                    <span class="logo-text">fileShare</span>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="progress-container">
+                <h2>Transferring Files</h2>
+                <div class="progress-bar">
+                    <div class="progress" id="progressBar"></div>
+                </div>
+                <p id="progressText">0% Complete</p>
+            </div>
+        </main>
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 fileShare. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../static/js/script.js"></script>
+</body>
+</html>

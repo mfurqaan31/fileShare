@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fileShare Policy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/images/apple-touch-icon.png">
+    <link rel="shortcut icon" type="image/png" sizes="512x512" href="../static/images/android-chrome-512x512.png" >
+    <link rel="shortcut icon" type="image/png" sizes="192x192" href="../static/images/android-chrome-192x192.png" >
+    <link rel="shortcut icon" type="image/png" sizes="32x32" href="../static/images/favicon-32x32.png" >
+    <link rel="shortcut icon" type="image/png" sizes="16x16" href="../static/images/favicon-16x16.png" >
+    <style>
+        :root {
+            --neon: #cfff04;
+            --smoky-black: hsl(240, 2%, 12%);
+            --deep-black: hsl(0, 0%, 0%);
+            --white-1: hsl(0, 0%, 100%);
+            --pure-gold: #FFD700;
+            --error-red: #FF0000;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--white-1);
+            background: radial-gradient(#222, #101010);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-size: 18px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        header {
+            background-color: var(--deep-black);
+            border-bottom: 1px solid var(--neon);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-left: 0;
+            padding-left: 10px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            border: 2px solid var(--neon);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--neon);
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 6rem 1rem 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content-wrapper {
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: var(--neon);
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--neon);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        p, ul {
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            padding-left: 2rem;
+        }
+
+        footer {
+            background-color: var(--deep-black);
+            border-top: 1px solid var(--neon);
+            margin-top: auto;
+            padding: 1.5rem 0;
+            text-align: center;
+            color: var(--white-1);
+            font-size: 1.1rem;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(#222, #101010);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+        }
+
+        .loading-circle {
+            width: 100%;
+            height: 100%;
+            border: 10px solid transparent;
+            border-top: 10px solid var(--neon);
+            border-radius: 50%;
+            animation: drawCircle 2s linear forwards;
+        }
+
+        .loading-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            font-weight: bold;
+            color: var(--white-1);
+        }
+
+        @keyframes drawCircle {
+            0% {
+                transform: rotate(0deg);
+                border-top: 10px solid var(--neon);
+            }
+            25% {
+                border-right: 10px solid var(--neon);
+            }
+            50% {
+                border-bottom: 10px solid var(--neon);
+            }
+            75% {
+                border-left: 10px solid var(--neon);
+            }
+            100% {
+                transform: rotate(360deg);
+                border: 2px solid var(--neon);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-overlay">
+        <div class="loading-container">
+            <div class="loading-circle"></div>
+            <div class="loading-text">LOADING</div>
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../static/images/fs-logo.png" alt="fileShare Logo" draggable="false">
+                <span class="logo-text">fileShare</span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content-wrapper">
+            <h1 style="text-align: center;">Privacy Policy</h1>
+            <p style="text-align: center;">Last updated: February 2024</p>
+
+            <section class="fade-in">
+                <h2>Introduction</h2>
+                <p>We prioritize your privacy and secure data handling</p>
+
+                <h2>Information We Collect</h2>
+                <p>We collect only the following information for operational purposes</p>
+                <ul>
+                    <li>The sender's email and recipient email addresses</li>
+                    <li>Files you upload (up to 1 GB in size)</li>
+                </ul>
+
+                <h2>How We Use Your Information</h2>
+                <p>Your data is handled responsibly and used solely to</p>
+                <ul>
+                    <li>Facilitate file transfers</li>
+                    <li>Generate and manage download links</li>
+                </ul>
+
+                <h2>File and Data Security</h2>
+                <p>We store your files temporarily on secure Azure Blob Storage</p>
+                <ul>
+                    <li>Encrypt them with a unique key that is not stored on our servers</li>
+                    <li>Deleted automatically after 24 hours, and the download link expires after 6 hours.</li>
+                </ul>
+
+                <h2>Developer's Commitment</h2>
+                <p>We are committed to safeguarding your privacy</p>
+                <ul>
+                    <li>We do not view, access, or share your files</li>
+                    <li>Your data is not used for any purposes beyond file transfer functionality</li>
+                </ul>
+
+                <h2>Contact Us</h2>
+                <p>If you have questions or concerns about your data, contact us at <a href="mailto:furqaanwebsite@gmail.com" style="color: blue; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'"><strong>email</strong></a>
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 fileShare. All rights reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        // Loading animation
+        const loadingOverlay = document.querySelector('.loading-overlay');
+        setTimeout(() => {
+            loadingOverlay.style.display = 'none';
+        }, 2000);
+    </script>
+</body>
+</html>
