@@ -322,7 +322,7 @@ def upload():
         blob_client.commit_block_list(block_list)
 
         # Generate SAS Token with IST expiry
-        expiry_time = now_ist + datetime.timedelta(minutes=30)
+        expiry_time = now_ist + datetime.timedelta(hours=6)
         sas_token = generate_blob_sas(
             account_name=blob_client.account_name,
             container_name=CONTAINER_NAME,
